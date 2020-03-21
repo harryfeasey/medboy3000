@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity(), CallbackListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        buttonShowDialog.setOnClickListener { showDialog()}
+        floating_action_button.setOnClickListener { showDialog()}
     }
 
     private fun showDialog() {
