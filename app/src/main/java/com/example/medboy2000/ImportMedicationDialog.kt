@@ -14,6 +14,7 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
         savedInstanceState: Bundle?
     ): View? {
         isCancelable = false
+        retainInstance = true
         return inflater.inflate(R.layout.importmedication, container, false)
     }
     override fun getTheme(): Int {
