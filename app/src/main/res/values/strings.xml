@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MedBoy 3000</string>
+    <string name="radioDaily">Daily</string>
+    <string name="radioWeekly">Weekly</string>
 </resources>

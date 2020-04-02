@@ -20,4 +20,5 @@ class MainActivity : AppCompatActivity(), CallbackListener {
     override fun onDataReceived(data: String) {
         textView.text = data
     }
+
 }
