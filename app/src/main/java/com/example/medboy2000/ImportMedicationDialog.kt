@@ -13,7 +13,7 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        isCancelable = false
+        isCancelable = true
         retainInstance = true
         return inflater.inflate(R.layout.importmedication, container, false)
     }

@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity(), CallbackListener {
 
     private fun showDialog() {
         val dialogFragment = ImportMedicationDialog(this)
+
         dialogFragment.show(supportFragmentManager, "signature")
     }
 
