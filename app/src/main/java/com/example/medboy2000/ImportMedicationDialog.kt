@@ -22,12 +22,16 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        button.setOnClickListener {
+        saveButton.setOnClickListener {
             //send back data to PARENT fragment using callback
             callbackListener.onDataReceived(editText.text.toString())
             // Now dismiss the fragment
             dismiss()
         }
+
+        closeButton.setOnClickListener{
+            dismiss()
+        };
 
     }
 

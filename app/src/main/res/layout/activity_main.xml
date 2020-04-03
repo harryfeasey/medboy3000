@@ -146,8 +146,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="317dp"
+        android:layout_height="129dp"
         android:layout_marginTop="120dp"
         android:text="Show received data from full screen dialog"
         android:textSize="17sp"
