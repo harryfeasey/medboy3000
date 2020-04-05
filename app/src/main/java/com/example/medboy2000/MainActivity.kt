@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity(), CallbackListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         floating_action_button.setOnClickListener { showDialog()}
+
     }
 
     private fun showDialog() {
