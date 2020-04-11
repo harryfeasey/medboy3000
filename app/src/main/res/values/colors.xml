@@ -5,4 +5,5 @@
     <color name="colorPrimaryDark">#DADCE0</color>
     <color name="colorAccent">#E0E0E0</color>
     <color name="white">#FFFFFFFF</color>
+    <string name="selected">#8E56DF</string>
 </resources>

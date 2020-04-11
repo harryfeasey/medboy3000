@@ -16,6 +16,9 @@ import java.io.*
 import java.util.*
 
 class ImportMedicationDialog (private val callbackListener: CallbackListener) : DialogFragment() {
+
+    private val reminderCalendar = Calendar.getInstance()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,9 +28,11 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
         retainInstance = true
         return inflater.inflate(R.layout.importmedication, container, false)
     }
+
     override fun getTheme(): Int {
         return R.style.DialogTheme
     }
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -35,45 +40,54 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
 
 
         saveButton.setOnClickListener {
-            //send back data to PARENT fragment using callback
-            callbackListener.onDataReceived(nameTxt.text.toString())
+
 
             // --------------------------------
 
 
-            val name:String = nameTxt.text.toString()
-            val dosage:String = dosageTxt.text.toString()
-            val weekly:String = weeklyButton.isChecked.toString()
-            val fileOutputStream: FileOutputStream
-
-            try {
-
-                fileOutputStream = context!!.openFileOutput("day", Context.MODE_PRIVATE)
-                fileOutputStream.write(name.toByteArray())
-                fileOutputStream.write(dosage.toByteArray())
-                fileOutputStream.write(weekly.toByteArray())
-
-                //TODO create object, and convert to byte array.
-
-            } catch (e: FileNotFoundException){
-                e.printStackTrace()
-            }catch (e: NumberFormatException){
-                e.printStackTrace()
-            }catch (e: IOException){
-                e.printStackTrace()
-            }catch (e: Exception){
-                e.printStackTrace()
-            }
-            Toast.makeText(context!!.applicationContext,"Medication added.", Toast.LENGTH_LONG).show()
+            val name = nameTxt.text.toString()
+            val dosage = dosageTxt.text.toString()
+            val weekly = weeklyButton.isChecked
 
 
-        // --------------------------------
+
+
+            val newMedication = Medication(name, dosage, weekly, reminderCalendar.time)
+
+            //send back data to PARENT fragment using callback
+            callbackListener.onDataReceived(newMedication)
+
+//            val fileOutputStream: FileOutputStream
+//
+//            try {
+//
+//                fileOutputStream = context!!.openFileOutput("day", Context.MODE_PRIVATE)
+//                fileOutputStream.write(name.toByteArray())
+//                fileOutputStream.write(dosage.toByteArray())
+//                fileOutputStream.write(weekly.toByteArray())
+//
+//                //TODO create object, and convert to byte array.
+//
+//            } catch (e: FileNotFoundException){
+//                e.printStackTrace()
+//            }catch (e: NumberFormatException){
+//                e.printStackTrace()
+//            }catch (e: IOException){
+//                e.printStackTrace()
+//            }catch (e: Exception){
+//                e.printStackTrace()
+//            }
+//            Toast.makeText(context!!.applicationContext,"Medication added.", Toast.LENGTH_LONG).show()
+
+
+            // --------------------------------
 
 
             // Now dismiss the fragment
             dismiss()
         }
 
+        createTimePicker()
 
         closeButton.setOnClickListener{
             dismiss()
@@ -81,37 +95,36 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
 
 
 
-        // -------------------------- REMINDER TIME PICKER --------------------------
-        val calendar = Calendar.getInstance()
-        val hour = calendar.get(Calendar.HOUR) + 1
-        val min = calendar.get(Calendar.MINUTE)
+    }
 
-        calendar.set(Calendar.HOUR, hour)
-        calendar.set(Calendar.MINUTE, min)
 
-        newReminderTime.text = SimpleDateFormat("hh:mm aa").format(calendar.time)
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun createTimePicker(){
+
+        val hour = reminderCalendar.get(Calendar.HOUR) + 1
+        val min = reminderCalendar.get(Calendar.MINUTE)
+
+        reminderCalendar.set(Calendar.HOUR, hour)
+        reminderCalendar.set(Calendar.MINUTE, min)
+
+        newReminderTime.text = SimpleDateFormat("hh:mm aa").format(reminderCalendar.time)
 
 
         val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-            calendar.set(Calendar.HOUR, hour)
-            calendar.set(Calendar.MINUTE, minute)
+            reminderCalendar.set(Calendar.HOUR, hour)
+            reminderCalendar.set(Calendar.MINUTE, minute)
 
-            newReminderTime.text = SimpleDateFormat("hh:mm aa").format(calendar.time)
+            newReminderTime.text = SimpleDateFormat("hh:mm aa").format(reminderCalendar.time)
         }
 
         setReminderButton.setOnClickListener {
             TimePickerDialog(
-                context, timeSetListener, calendar.get(Calendar.HOUR),
-                calendar.get(Calendar.MINUTE), false).show()
+                context, timeSetListener, reminderCalendar.get(Calendar.HOUR),
+                reminderCalendar.get(Calendar.MINUTE), false).show()
         }
 
-        // -----------------------------------------------------------------------------
-
-
-
-
-
     }
+
 
 
 }
