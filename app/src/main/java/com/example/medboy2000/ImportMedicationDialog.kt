@@ -41,46 +41,14 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
 
         saveButton.setOnClickListener {
 
-
-            // --------------------------------
-
-
             val name = nameTxt.text.toString()
             val dosage = dosageTxt.text.toString()
             val weekly = weeklyButton.isChecked
 
-
-
-
             val newMedication = Medication(name, dosage, weekly, reminderCalendar.time)
 
-            //send back data to PARENT fragment using callback
+            //send back data to parent fragment using callback
             callbackListener.onDataReceived(newMedication)
-
-//            val fileOutputStream: FileOutputStream
-//
-//            try {
-//
-//                fileOutputStream = context!!.openFileOutput("day", Context.MODE_PRIVATE)
-//                fileOutputStream.write(name.toByteArray())
-//                fileOutputStream.write(dosage.toByteArray())
-//                fileOutputStream.write(weekly.toByteArray())
-//
-//                //TODO create object, and convert to byte array.
-//
-//            } catch (e: FileNotFoundException){
-//                e.printStackTrace()
-//            }catch (e: NumberFormatException){
-//                e.printStackTrace()
-//            }catch (e: IOException){
-//                e.printStackTrace()
-//            }catch (e: Exception){
-//                e.printStackTrace()
-//            }
-//            Toast.makeText(context!!.applicationContext,"Medication added.", Toast.LENGTH_LONG).show()
-
-
-            // --------------------------------
 
 
             // Now dismiss the fragment

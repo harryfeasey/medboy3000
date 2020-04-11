@@ -148,20 +148,21 @@
         android:id="@+id/textView"
         android:layout_width="317dp"
         android:layout_height="129dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="356dp"
         android:text="Show received data from full screen dialog"
         android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonShowDialog"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.404"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="122dp" />
+        android:layout_marginTop="148dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
