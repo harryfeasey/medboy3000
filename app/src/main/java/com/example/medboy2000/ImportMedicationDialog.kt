@@ -41,9 +41,12 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
 
         saveButton.setOnClickListener {
 
+
             val name = nameTxt.text.toString()
             val dosage = dosageTxt.text.toString()
             val weekly = weeklyButton.isChecked
+
+            //TODO check if a name and dosage was entered, use toast to validate.
 
             val newMedication = Medication(name, dosage, weekly, reminderCalendar.time)
 

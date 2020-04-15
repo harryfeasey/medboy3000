@@ -3,17 +3,14 @@ package com.example.medboy2000
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import com.google.gson.Gson
-import java.io.File
-import java.io.FileNotFoundException
-import java.io.FileOutputStream
-import android.content.Context
-import java.io.IOException
+import java.io.*
 
 
 class MainActivity : AppCompatActivity(), CallbackListener {
@@ -115,7 +112,57 @@ class MainActivity : AppCompatActivity(), CallbackListener {
         selected.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimarySelected))
         val filename = selected.text.toString() + ".txt"
         // TODO Get the Gson objects for medication stored for this day and display it.
+        loadMedication(filename)
 
+    }
+
+    private fun loadMedication(fileName:String){
+
+        val gson = Gson()
+        var text = ""
+
+        try {
+            //Make your FilePath and File
+            val yourFilePath = applicationContext.filesDir.toString() + "/" + fileName
+            val yourFile = File(yourFilePath)
+            //Make an InputStream with your File in the constructor
+            val inputStream = FileInputStream(yourFile)
+            val stringBuilder = StringBuilder()
+
+            //Check to see if your inputStream is null
+            //If it isn't use the inputStream to make a InputStreamReader
+            //Use that to make a BufferedReader
+            //Also create an empty String
+
+            if (inputStream != null) {
+                val inputStreamReader = InputStreamReader(inputStream)
+                val bufferedReader = BufferedReader(inputStreamReader)
+                var receiveString = ""
+                //Use a while loop to append the lines from the Buffered reader
+                var value = bufferedReader.readLine()
+                while (value != null) {
+                    stringBuilder.append(value)
+                    value = bufferedReader.readLine()
+                }
+                //Close your InputStream and save stringBuilder as a String
+                inputStream.close()
+                text = stringBuilder.toString()
+            }
+            //Use Gson to recreate your Object from the text String
+            val med = gson.fromJson(text, Medication::class.java)
+            checkNotNull(text)
+            println(text)
+            textView.text = med.name + "\nTake " + med.dosage + ".\n" + med.reminder.toString()
+
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+            textView.text = "Nothing to take today."
+        } catch (e: IOException) {
+            e.printStackTrace()
+
+        }catch (e: IllegalStateException) {
+            e.printStackTrace()
+        }
 
     }
 
