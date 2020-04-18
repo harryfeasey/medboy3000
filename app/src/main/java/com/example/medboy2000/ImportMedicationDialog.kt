@@ -1,7 +1,6 @@
 package com.example.medboy2000
 
 import android.app.TimePickerDialog
-import android.content.Context
 import android.icu.text.SimpleDateFormat
 import android.os.Build
 import android.os.Bundle
@@ -12,8 +11,9 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.importmedication.*
-import java.io.*
 import java.util.*
+
+
 
 class ImportMedicationDialog (private val callbackListener: CallbackListener) : DialogFragment() {
 
@@ -37,7 +37,9 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
-
+//        nameTxt.requestFocus()
+//        val imm = getSystemService(context.INPUT_METHOD_SERVICE) as InputMethodManager?
+//        imm!!.showSoftInput(nameTxt, InputMethodManager.SHOW_IMPLICIT)
 
         saveButton.setOnClickListener {
 
@@ -46,16 +48,26 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
             val dosage = dosageTxt.text.toString()
             val weekly = weeklyButton.isChecked
 
-            //TODO check if a name and dosage was entered, use toast to validate.
+            if (name == ""){
 
-            val newMedication = Medication(name, dosage, weekly, reminderCalendar.time)
+                Toast.makeText(context,"Name required.", Toast.LENGTH_LONG).show()
 
-            //send back data to parent fragment using callback
-            callbackListener.onDataReceived(newMedication)
+            } else if(dosage == ""){
+
+                Toast.makeText(context,"Dosage required.", Toast.LENGTH_LONG).show()
+
+            } else {
 
 
-            // Now dismiss the fragment
-            dismiss()
+                val newMedication = Medication(0, name, dosage, weekly, reminderCalendar.time)
+
+                //send back data to parent fragment using callback
+                callbackListener.onDataReceived(newMedication)
+
+
+                // Now dismiss the fragment
+                dismiss()
+            }
         }
 
         createTimePicker()
@@ -81,8 +93,8 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
         newReminderTime.text = SimpleDateFormat("hh:mm aa").format(reminderCalendar.time)
 
 
-        val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-            reminderCalendar.set(Calendar.HOUR, hour)
+        val timeSetListener = TimePickerDialog.OnTimeSetListener { _, new_hour, minute ->
+            reminderCalendar.set(Calendar.HOUR, new_hour)
             reminderCalendar.set(Calendar.MINUTE, minute)
 
             newReminderTime.text = SimpleDateFormat("hh:mm aa").format(reminderCalendar.time)
