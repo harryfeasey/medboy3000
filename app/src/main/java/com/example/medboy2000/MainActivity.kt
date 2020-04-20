@@ -61,40 +61,6 @@ class MainActivity : AppCompatActivity(), CallbackListener {
 
         Toast.makeText(applicationContext,"Medication added.", Toast.LENGTH_LONG).show()
 
-//        textView.text = newMedication.reminder.toString()
-
-
-//        val gson = Gson()
-//        val yourObjectJson = gson.toJson(newMedication)
-//
-//        //Get your FilePath and use it to create your File
-//        val filename = selected.text.toString() + ".txt"
-//
-//
-//        val filePath = this.filesDir.toString() + "/" + filename
-//        val file = File(filePath)
-//        //Create your FileOutputStream, yourFile is part of the constructor
-//        val fileOutputStream = FileOutputStream(file)
-//
-//
-//        try {
-//
-//            //Convert your JSON String to Bytes and write() it
-//            fileOutputStream.write(yourObjectJson.toByteArray())
-//            //Finally flush and close your FileOutputStream
-//            fileOutputStream.flush()
-//            fileOutputStream.close()
-//
-//        } catch (e: FileNotFoundException){
-//            e.printStackTrace()
-//        }catch (e: NumberFormatException){
-//            e.printStackTrace()
-//        }catch (e: IOException){
-//            e.printStackTrace()
-//        }catch (e: Exception){
-//            e.printStackTrace()
-//        }
-
     }
 
 

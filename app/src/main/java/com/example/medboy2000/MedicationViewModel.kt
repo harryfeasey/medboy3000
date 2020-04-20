@@ -28,4 +28,10 @@ class MedicationViewModel (application: Application) : AndroidViewModel(applicat
     fun insert(medication: Medication) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(medication)
     }
+    /**
+     * Launching a new coroutine to delete the data in a non-blocking way
+     */
+    fun delete(medication: Medication) = viewModelScope.launch(Dispatchers.IO) {
+        repository.delete(medication)
+    }
 }
