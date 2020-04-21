@@ -17,7 +17,8 @@ class MedicationViewModel (application: Application) : AndroidViewModel(applicat
     val allMeds: LiveData<List<Medication>>
 
     init {
-        val medsDAO = MedicationRoomDatabase.getDatabase(application, viewModelScope).medicationDao()
+        val medsDAO =
+            MedicationRoomDatabase.getDatabase(application, viewModelScope).medicationDao()
         repository = MedicationRepository(medsDAO)
         allMeds = repository.allMeds
     }
@@ -28,6 +29,15 @@ class MedicationViewModel (application: Application) : AndroidViewModel(applicat
     fun insert(medication: Medication) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(medication)
     }
+
+    /**
+     * Launching a new coroutine to update the data in a non-blocking way
+     */
+    fun update(medication: Medication) = viewModelScope.launch(Dispatchers.IO) {
+        repository.update(medication)
+    }
+
+
     /**
      * Launching a new coroutine to delete the data in a non-blocking way
      */

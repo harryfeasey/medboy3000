@@ -13,9 +13,7 @@ import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.importmedication.*
 import java.util.*
 
-
-
-class ImportMedicationDialog (private val callbackListener: CallbackListener) : DialogFragment() {
+class EditMedicationDialog(private val callbackListener: CallbackListener, private val medication: Medication) : DialogFragment() {
 
     private val reminderCalendar = Calendar.getInstance()
 
@@ -26,7 +24,8 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
     ): View? {
         isCancelable = true
         retainInstance = true
-        return inflater.inflate(R.layout.importmedication, container, false)
+        //swap to edit layout
+        return inflater.inflate(R.layout.editmedication, container, false)
     }
 
     override fun getTheme(): Int {
@@ -37,9 +36,13 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
-//        nameTxt.requestFocus()
-//        val imm = getSystemService(context.INPUT_METHOD_SERVICE) as InputMethodManager?
-//        imm!!.showSoftInput(nameTxt, InputMethodManager.SHOW_IMPLICIT)
+
+        //TODO load medication into text fields.
+        nameTxt.setText(medication.name)
+        dosageTxt.setText(medication.dosage)
+        weeklyButton.isSelected = (medication.weekly)
+
+
 
         saveButton.setOnClickListener {
 
@@ -58,11 +61,11 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
 
             } else {
 
-
-                val newMedication = Medication(0, name, dosage, weekly, reminderCalendar.time)
+                val id = medication.id
+                val updatedMedication = Medication(id, name, dosage, weekly, reminderCalendar.time)
 
                 //send back data to parent fragment using callback
-                callbackListener.onInsertDataReceived(newMedication)
+                callbackListener.onUpdateDataReceived(updatedMedication)
 
 
                 // Now dismiss the fragment
@@ -84,7 +87,8 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun createTimePicker(){
 
-        val hour = reminderCalendar.get(Calendar.HOUR) + 1
+        reminderCalendar.setTime(medication.reminder)
+        val hour = reminderCalendar.get(Calendar.HOUR)
         val min = reminderCalendar.get(Calendar.MINUTE)
 
         reminderCalendar.set(Calendar.HOUR, hour)
