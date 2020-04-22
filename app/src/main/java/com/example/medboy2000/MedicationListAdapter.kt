@@ -27,6 +27,7 @@ class MedicationListAdapter internal constructor(
     private val mContext: Context = context
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var meds = emptyList<Medication>() // Cached copy of words
+    private var allMeds = emptyList<Medication>()
     private var medicationViewModel = ViewModelProviders.of(context as FragmentActivity).get(MedicationViewModel::class.java);
 
     inner class MedicationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -47,9 +48,13 @@ class MedicationListAdapter internal constructor(
 
         val current = meds[position]
         holder.medicationNameView.text = current.name
-        holder.medicationDosageView.text = "Take ${current.dosage}."
+        holder.medicationDosageView.text = "${mContext.getString(R.string.take)}${current.dosage}"
         holder.medicationReminderView.text = SimpleDateFormat("hh:mm aa").format(current.reminder?.time)
-        holder.medicationDeleteButton.setOnClickListener {medicationViewModel.delete(current)}
+        holder.medicationDeleteButton.setOnClickListener {
+            if (mContext is MainActivity) {
+                mContext.showDeleteDialog(current)
+            }
+        }
         holder.medicationEditButton.setOnClickListener{
                 if (mContext is MainActivity) {
                     mContext.showEditDialog(current)
@@ -58,8 +63,35 @@ class MedicationListAdapter internal constructor(
 
         }
 
-    internal fun setMeds(meds: List<Medication>) {
-        this.meds = meds
+    internal fun setMeds(meds: List<Medication>, selected:Button) {
+
+        this.allMeds = meds
+        var newDaysMeds:MutableList<Medication> = mutableListOf()
+
+        for(medication:Medication in meds){
+            if ((medication.weekly && medication.day == selected.text) || (!medication.weekly)){
+                newDaysMeds.add(medication)
+
+            }
+        }
+
+        this.meds = newDaysMeds
+        notifyDataSetChanged()
+    }
+
+
+    internal fun setMeds(selected:Button) {
+
+        var newDaysMeds:MutableList<Medication> = mutableListOf()
+
+        for(medication:Medication in allMeds){
+            if ((medication.weekly && medication.day == selected.text) || (!medication.weekly)){
+                newDaysMeds.add(medication)
+
+            }
+        }
+
+        this.meds = newDaysMeds
         notifyDataSetChanged()
     }
 

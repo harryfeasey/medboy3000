@@ -1,13 +1,15 @@
 package com.example.medboy2000
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 @Dao
 interface MedicationDAO {
 
+
     @Query("SELECT * from meds_table ORDER BY datetime(reminder) ASC")
-    fun getOrderedMeds(): LiveData<List<Medication>>
+    fun getAllMeds(): LiveData<List<Medication>>
 
     @Query("Select * FROM meds_table where id = :id")
     fun findByPrimaryKey(id: Int): Medication

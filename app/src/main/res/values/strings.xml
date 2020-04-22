@@ -2,4 +2,38 @@
     <string name="app_name">MedBoy3K</string>
     <string name="radioDaily">Daily</string>
     <string name="radioWeekly">Weekly</string>
+    <string name="take">Take </string>
+    <string name="dayLabelText">Medication for</string>
+    <string name="medAdded">Medication added.</string>
+    <string name="medUpdated">Medication updated.</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="areYouSureDelete">Are you sure you want to delete?</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="mo" translatable="false">MO</string>
+    <string name="tu" translatable="false">TU</string>
+    <string name="we" translatable="false">WE</string>
+    <string name="th" translatable="false">TH</string>
+    <string name="fr" translatable="false">FR</string>
+    <string name="sa" translatable="false">SA</string>
+    <string name="su" translatable="false">SU</string>
+    <string name="sampleText" translatable="false">Medications for 12th Apr.</string>
+    <string name="AppName">MedBoy 3000</string>
+    <string name="edit">Edit</string>
+    <string name="sampletime" translatable="false">17:38 PM</string>
+    <string name="reminder_time">Reminder Time</string>
+    <string name="set_reminder">Set Reminder</string>
+    <string name="name_hint">Name</string>
+    <string name="dosage_hint">Dosage</string>
+    <string name="save">Save</string>
+    <string name="edit_medication">Edit Medication</string>
+    <string name="dosage">Dosage</string>
+    <string name="new_medication">New Medication</string>
+
 </resources>

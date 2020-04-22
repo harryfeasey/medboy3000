@@ -15,7 +15,7 @@ import java.util.*
 
 
 
-class ImportMedicationDialog (private val callbackListener: CallbackListener) : DialogFragment() {
+class ImportMedicationDialog (private val callbackListener: CallbackListener, val day:String) : DialogFragment() {
 
     private val reminderCalendar = Calendar.getInstance()
 
@@ -59,7 +59,7 @@ class ImportMedicationDialog (private val callbackListener: CallbackListener) : 
             } else {
 
 
-                val newMedication = Medication(0, name, dosage, weekly, reminderCalendar.time)
+                val newMedication = Medication(0, name, dosage, weekly, reminderCalendar.time, day)
 
                 //send back data to parent fragment using callback
                 callbackListener.onInsertDataReceived(newMedication)

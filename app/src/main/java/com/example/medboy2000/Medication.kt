@@ -7,4 +7,4 @@ import androidx.room.TypeConverters
 
 @Entity(tableName = "meds_table")
 data class Medication(@PrimaryKey(autoGenerate = true) val id: Int,
-                      var name: String, var dosage: String, var weekly: Boolean, var reminder: Date?)
+                      var name: String, var dosage: String, var weekly: Boolean, var reminder: Date?, var day:String)

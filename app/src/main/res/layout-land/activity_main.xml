@@ -8,6 +8,23 @@
     android:layout_height="match_parent">
 
 
+    <TextView
+        android:id="@+id/dayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:paddingBottom="20dp"
+        android:text="@string/sampleText"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toStartOf="@+id/recyclerView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.275" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -16,9 +33,7 @@
         android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.006"
-        tools:layout_editor_absoluteX="46dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <Space
             android:layout_width="wrap_content"
@@ -30,9 +45,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:insetTop="6dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:text="M"
+            android:text="@string/mo"
             app:iconPadding="6dp" />
 
         <Space
@@ -47,7 +63,7 @@
             android:layout_weight="3"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:text="T"
+            android:text="@string/tu"
             app:iconPadding="6dp" />
 
         <Space
@@ -64,7 +80,7 @@
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
             android:paddingBottom="4dp"
-            android:text="W"
+            android:text="@string/we"
             android:textSize="12sp" />
 
         <Space
@@ -80,7 +96,7 @@
             android:fontFamily="sans-serif-medium"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:text="Th"
+            android:text="@string/th"
             android:textAllCaps="false"
             android:textSize="14sp" />
 
@@ -95,8 +111,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:fontFamily="sans-serif-medium"
-            android:text="F"
-            android:textSize="14sp" />
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="@string/fr"
+            android:textSize="12sp" />
 
         <Space
             android:layout_width="wrap_content"
@@ -109,7 +127,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:fontFamily="sans-serif-medium"
-            android:text="S"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="@string/sa"
             android:textSize="14sp" />
 
         <Space
@@ -125,7 +145,7 @@
             android:fontFamily="sans-serif-medium"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:text="Su"
+            android:text="@string/su"
             android:textAllCaps="false"
             android:textSize="14sp" />
 
@@ -150,13 +170,20 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="811dp"
+        android:layout_height="239dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="128dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp"
+        app:layout_constraintVertical_bias="0.382"
         tools:listitem="@layout/recyclerview_item" />
 
     <TextView
@@ -166,7 +193,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/press_start_2p"
-        android:text="MedBoy 3000"
+        android:text="@string/AppName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

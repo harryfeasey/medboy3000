@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MedTama 3K</string>
+    <string name="wednesday">Rārena</string>
+    <string name="tuesday">Rātapu</string>
+    <string name="thursday">Rāpare</string>
+    <string name="take">Tangohia</string>
+    <string name="sunday">Rātapu</string>
+    <string name="set_reminder">"Tautuhi Whakamaumahara "</string>
+    <string name="save">Whakaora</string>
+    <string name="saturday">Hatarei</string>
+    <string name="AppName">MedTama 3000</string>
+    <string name="areYouSureDelete">" Kei te hiahia koe ki te muku?"</string>
+    <string name="cancel">Whakakore</string>
+    <string name="dayLabelText">Te rongoa mo</string>
+    <string name="delete">Muputu</string>
+    <string name="dosage">Te pota</string>
+    <string name="dosage_hint">Te pota</string>
+    <string name="edit">Whakatika</string>
+    <string name="edit_medication">Whakatika te rongoa</string>
+    <string name="friday">Paraire</string>
+    <string name="medAdded">Tapiritia te rongoa.</string>
+    <string name="medUpdated">Kua whakahoutia te rongoa.</string>
+    <string name="monday">Ite</string>
+    <string name="name_hint">Ingoa</string>
+    <string name="radioDaily">"Ia rā "</string>
+    <string name="radioWeekly">Wiki</string>
+    <string name="reminder_time">Te Mahinga Whakamaumahara</string>
+    <string name="new_medication">Hou te rongoa</string>
+</resources>

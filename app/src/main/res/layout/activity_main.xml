@@ -16,7 +16,9 @@
         android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
 
         <Space
             android:layout_width="wrap_content"
@@ -28,9 +30,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:insetTop="6dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:text="M"
+            android:text="@string/mo"
             app:iconPadding="6dp" />
 
         <Space
@@ -45,7 +48,7 @@
             android:layout_weight="3"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:text="T"
+            android:text="@string/tu"
             app:iconPadding="6dp" />
 
         <Space
@@ -62,7 +65,7 @@
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
             android:paddingBottom="4dp"
-            android:text="W"
+            android:text="@string/we"
             android:textSize="12sp" />
 
         <Space
@@ -78,7 +81,7 @@
             android:fontFamily="sans-serif-medium"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:text="Th"
+            android:text="@string/th"
             android:textAllCaps="false"
             android:textSize="14sp" />
 
@@ -93,8 +96,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:fontFamily="sans-serif-medium"
-            android:text="F"
-            android:textSize="14sp" />
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="@string/fr"
+            android:textSize="12sp" />
 
         <Space
             android:layout_width="wrap_content"
@@ -107,7 +112,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:fontFamily="sans-serif-medium"
-            android:text="S"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="@string/sa"
             android:textSize="14sp" />
 
         <Space
@@ -123,7 +130,7 @@
             android:fontFamily="sans-serif-medium"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
-            android:text="Su"
+            android:text="@string/su"
             android:textAllCaps="false"
             android:textSize="14sp" />
 
@@ -134,22 +141,22 @@
 
     </LinearLayout>
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="425dp"
-        android:layout_height="640dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="431dp"
+        android:layout_height="598dp"
+        android:layout_marginTop="45dp"
         android:layout_marginBottom="5dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         app:layout_constraintBottom_toTopOf="@+id/floating_action_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        tools:listitem="@layout/recyclerview_item" />
+        tools:listitem="@layout/recyclerview_item">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/textView3"
@@ -158,9 +165,24 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/press_start_2p"
-        android:text="MedBoy 3000"
+        android:text="@string/AppName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:paddingBottom="20dp"
+        android:text="@string/sampleText"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.142" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_action_button"

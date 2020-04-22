@@ -1,6 +1,8 @@
 package com.example.medboy2000
 
 import android.app.Application
+import android.util.Log
+import android.widget.Button
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -14,7 +16,7 @@ class MedicationViewModel (application: Application) : AndroidViewModel(applicat
     // - We can put an observer on the data (instead of polling for changes) and only update the
     //   the UI when the data actually changes.
     // - Repository is completely separated from the UI through the ViewModel.
-    val allMeds: LiveData<List<Medication>>
+    var allMeds: LiveData<List<Medication>>
 
     init {
         val medsDAO =
@@ -45,3 +47,5 @@ class MedicationViewModel (application: Application) : AndroidViewModel(applicat
         repository.delete(medication)
     }
 }
+
+

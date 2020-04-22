@@ -12,7 +12,7 @@ import java.util.*
 
 // Annotates class to be a Room Database with a table (entity) of the Word class
 
-@Database(entities = arrayOf(Medication::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(Medication::class), version = 2, exportSchema = false)
 @TypeConverters(TimestampConverter::class)
 public abstract class MedicationRoomDatabase :RoomDatabase(){
 
@@ -36,7 +36,7 @@ public abstract class MedicationRoomDatabase :RoomDatabase(){
                     context.applicationContext,
                     MedicationRoomDatabase::class.java,
                     "meds_database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 return instance
             }
@@ -62,11 +62,11 @@ public abstract class MedicationRoomDatabase :RoomDatabase(){
             medicationDAO.deleteAll()
 
             // Add sample words.
-            var medication1 = Medication(0,"Iron","2",true,Calendar.getInstance().time)
+            var medication1 = Medication(0,"Iron","2",true,Calendar.getInstance().time, "MO")
             medicationDAO.insert(medication1)
-            var medication2 = Medication(0,"Steroid","5",true,Calendar.getInstance().time)
+            var medication2 = Medication(0,"Steroid","5",true,Calendar.getInstance().time, "TU")
             medicationDAO.insert(medication2)
-            var medication3 = Medication(0,"Multi-Vitamin","3",true,Calendar.getInstance().time)
+            var medication3 = Medication(0,"Multi-Vitamin","3",true,Calendar.getInstance().time, "WE")
             medicationDAO.insert(medication3)
         }
     }

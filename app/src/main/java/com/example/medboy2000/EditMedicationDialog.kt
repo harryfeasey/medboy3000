@@ -62,7 +62,7 @@ class EditMedicationDialog(private val callbackListener: CallbackListener, priva
             } else {
 
                 val id = medication.id
-                val updatedMedication = Medication(id, name, dosage, weekly, reminderCalendar.time)
+                val updatedMedication = Medication(id, name, dosage, weekly, reminderCalendar.time, medication.day)
 
                 //send back data to parent fragment using callback
                 callbackListener.onUpdateDataReceived(updatedMedication)
@@ -87,7 +87,7 @@ class EditMedicationDialog(private val callbackListener: CallbackListener, priva
     @RequiresApi(Build.VERSION_CODES.N)
     private fun createTimePicker(){
 
-        reminderCalendar.setTime(medication.reminder)
+        reminderCalendar.time = medication.reminder
         val hour = reminderCalendar.get(Calendar.HOUR)
         val min = reminderCalendar.get(Calendar.MINUTE)
 
