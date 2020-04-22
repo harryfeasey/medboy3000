@@ -19,6 +19,7 @@ The margin is a simple delimiter between the words. -->
     <style name="word_title">
         <item name="android:layout_width">match_parent</item>
         <item name="android:paddingLeft">8dp</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
     </style>
 
