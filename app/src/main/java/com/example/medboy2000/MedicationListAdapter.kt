@@ -48,7 +48,7 @@ class MedicationListAdapter internal constructor(
 
         val current = meds[position]
         holder.medicationNameView.text = current.name
-        holder.medicationDosageView.text = "${mContext.getString(R.string.take)}${current.dosage}"
+        holder.medicationDosageView.text = "${mContext.getString(R.string.take)} ${current.dosage}"
         holder.medicationReminderView.text = SimpleDateFormat("hh:mm aa").format(current.reminder?.time)
         holder.medicationDeleteButton.setOnClickListener {
             if (mContext is MainActivity) {

@@ -3,7 +3,7 @@
     <string name="radioDaily">Daily</string>
     <string name="radioWeekly">Weekly</string>
     <string name="take">Take </string>
-    <string name="dayLabelText">Medication for</string>
+    <string name="dayLabelText">Medication for </string>
     <string name="medAdded">Medication added.</string>
     <string name="medUpdated">Medication updated.</string>
     <string name="cancel">Cancel</string>

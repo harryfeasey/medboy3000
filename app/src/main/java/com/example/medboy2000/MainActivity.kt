@@ -191,7 +191,7 @@ class MainActivity : AppCompatActivity(), CallbackListener {
             "SA" -> getString(R.string.saturday)
             else -> getString(R.string.sunday)
         }
-        dayLabel.text = "${getString(R.string.dayLabelText)}$day"
+        dayLabel.text = "${getString(R.string.dayLabelText)} $day"
 
         selected.isSelected = true
         selected.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimarySelected))
